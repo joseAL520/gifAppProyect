@@ -15,8 +15,8 @@ export class SliderbarComponent {
     return this.gitsService.tagsHistory;
   }
     
-  buttonGif(){
-      
+  searchTag(tag:string):void{
+    this.gitsService.searchTag(tag);
   }
-
+    
 }
