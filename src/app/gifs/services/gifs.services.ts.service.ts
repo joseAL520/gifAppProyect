@@ -15,7 +15,10 @@ export class GifsServicesTsService {
 
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+      this.loadLocalStorage();
+
+   }
 
     get tagsHistory(){
       // [ con los corchetes llevamos un registro]
@@ -31,6 +34,20 @@ export class GifsServicesTsService {
 
     this._tagHistory.unshift(tag);
     this._tagHistory = this._tagHistory.splice(0,10);
+    this.saveLocalStore();
+  }
+  
+  private saveLocalStore():void{
+      localStorage.setItem('history',JSON.stringify(this._tagHistory));
+  }
+
+  private loadLocalStorage():void{
+
+    if( !localStorage.getItem('history') ) return;
+      this._tagHistory = JSON.parse(localStorage.getItem('history')!);
+
+      if(this._tagHistory.length === 0)return;
+      this.searchTag(this._tagHistory[0]);
   }
 
 
