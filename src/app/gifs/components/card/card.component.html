@@ -1,11 +1,8 @@
-     
-    <div class="card mb-2 text-center bg-dark">
-
-        <img [src]="gif.images.downsized_medium.url" [alt]="gif.title"  class="card-img-top">
-
-        <div class="card-body text-light">
-
-            <p class="card-text">{{gif.title}}</p>
-
-          </div>
+<div class="card mb-2 text-center bg-dark">
+    <app-shared-lazi-image [url]="gif.images.downsized_medium.url" 
+                           [alt]="gif.title || 'No Name'" ></app-shared-lazi-image>
+    <!-- <img [src]="gif.images.downsized_medium.url" [alt]="gif.title"  class="card-img-top"> -->
+    <div class="card-body text-light">
+            <p class="card-text">{{gif.title  || 'No title'}}</p>
     </div>
+</div>
